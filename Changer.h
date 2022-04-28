@@ -8,6 +8,11 @@ class Changer {
 	
 	private:
 		Runner runner;
+		std::string currentState;
+		int sid;
+		int rid;
+		Mailbox* mail;
+		int forkPos [4] = {}; 
 	public:
 		Changer();
 		~Changer();

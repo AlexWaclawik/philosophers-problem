@@ -83,6 +83,7 @@ void Runner::~Runner() {
 
 }
 
+
 void Runner::setState(std::string newState) {
 	this->state = newState;
 }
