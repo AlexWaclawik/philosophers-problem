@@ -33,6 +33,14 @@ Philosopher::~Philosopher(){
 
 }
 
+void Philosopher::giveToken(int giveID){
+    changer->giveToken(giveID);
+}
+
+void Philosopher::giveFork(int giveID){
+    changer->giveFork(giveID);
+}
+
 void Philosopher::thinking() {
     this->state = "THINKING";
     this->changer->stateChange(state);//tells changer taht the state has been changed

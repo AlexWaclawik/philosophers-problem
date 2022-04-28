@@ -27,6 +27,16 @@ int main() {
         }
         vectorPhilosopher.emplace_back(Philosopher, values);
     }
+    for(int j = 0; j < vectorInt.size(); j++){
+        for(int k = 0; k < vectorInt.size(); k++){
+            if((vectorInt[j][k] != -1) && (vectorInt[j][k] < j)){
+                vectorPhilosopher[j].giveFork(vectorInt[j][k]);
+            }
+            if((vectorInt[vectorInt.size() - j][vectorInt.size() - k] != -1) && (vectorInt[j][k] > j)){
+                vectorPhilosopher[vectorInt.size() - j].giveToken(vectorInt[j][k]);
+            }
+        }
+    }
 }
 
 std::vector parseString(std::string input) {

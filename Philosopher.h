@@ -31,6 +31,8 @@ public:
     std::string getState();//will contact changer to let it know that the forks can now be released to other philosophers
     void notDoneChange();//will be accessed from main.cpp to end the whole loop
     void start();
+    void giveFork(int);
+    void giveToken(int);
 };
 
 #endif
