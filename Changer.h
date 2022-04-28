@@ -12,6 +12,7 @@ class Changer {
 		int sid;
 		int rid;
 		Mailbox* mail;
+		int forkPos [4] = {}; 
 	public:
 		Changer();
 		~Changer();
