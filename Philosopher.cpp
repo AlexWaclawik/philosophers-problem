@@ -14,9 +14,10 @@
 #include <math.h>
 #include <Philosopher.h>
 #include <vector>
+#include "Mailbox.h"
 
-Philosopher::Philosopher(int* array){
-    id = array[0];
+Philosopher::Philosopher(int givenID, int* array, Mailbox* mail){
+    id = givenID;
     for (int i = 1; i < array.size(); i++) {
         if (array[i] != -1) {
             neighbors.emplace_back(array[i]);

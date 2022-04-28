@@ -70,3 +70,8 @@ int Mailbox::recv(uint16 dest, void *packet, int max) {
     }
     return 1;
 }
+
+
+void Mailbox::giveVector(std::vector<Philosopher*> vect){
+    vectorOfPhilosophers = vect;
+}

@@ -19,13 +19,16 @@ int main() {
     std::vector<std::vector<int>> vectorInt = parseString(fileInfo);
     std::vector<std::thread> vectorPhilosopher;
     int values[vectorInt.size()];
+    Mailbox mail = new Mailbox;
+    std::vector<Philosopher*> vectorOfPhilosophers;
     int philospherID = 0;
     for (int i = 0; i < vectorInt.size(); i++) {
         philosopherID = vectorInt[i][0];
         for (int j = 0; j < vectorInt.size(); j++) {
             values[j] = vectorInt[i][j];
         }
-        vectorPhilosopher.emplace_back(Philosopher, values);
+        vectorPhilosopher.emplace_back(Philosopher, i, values, &mail);
+        vectorOfPhilosophers.emplace_back(&vectorPhilosopher[vectorPhilosopher.end()]);
     }
     for(int j = 0; j < vectorInt.size(); j++){
         for(int k = 0; k < vectorInt.size(); k++){
@@ -37,6 +40,9 @@ int main() {
             }
         }
     }
+    mail.giveVector(vectorOfPhilosophers);
+
+
 }
 
 std::vector parseString(std::string input) {

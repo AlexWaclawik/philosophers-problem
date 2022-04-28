@@ -20,7 +20,7 @@ private:
     int id;
     std::vector<int> neighbors;
 public:
-    Philosopher(int*);//create philsopher and begin the loop
+    Philosopher(int, int*, Mailbox*);//create philsopher and begin the loop
     ~Philosopher();
     void thinking();
     void eating();
