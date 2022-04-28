@@ -8,14 +8,13 @@
 //then eats**in critical section
 //then realses forks
 //then restss for an exponential time
-#include <iostream>
-#include <thread>
-#include <sys/time.h>
-#include <math.h>
+//#include <iostream>
+//#include <thread>
+//#include <sys/time.h>
+//#include <math.h>
 #include "Philosopher.h"
-#include <vector>
-#include "Mailbox.h"
-#include <unistd.h>
+//#include <vector>
+//#include "Mailbox.h"
 
 
 Philosopher::Philosopher(int givenID, int* array, Mailbox* mail){
@@ -28,7 +27,7 @@ Philosopher::Philosopher(int givenID, int* array, Mailbox* mail){
     notDone = true;//main loop for philosopher
     notifyBool = true;//true means stay in entry section
     state = "HUNGRY";//state begins at hungry
-    this->changer = new Changer();//create changer
+    changer = new Changer();//create changer
      //will end when notDoneChange is called
 }
 
@@ -37,11 +36,11 @@ Philosopher::~Philosopher(){
 }
 
 void Philosopher::giveToken(int giveID){
-    this->changer->giveToken(giveID);
+    changer->giveToken(giveID);
 }
 
 void Philosopher::giveFork(int giveID){
-    this->changer->giveFork(giveID);
+    changer->giveFork(giveID);
 }
 
 void Philosopher::thinking() {

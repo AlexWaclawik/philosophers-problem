@@ -6,8 +6,6 @@
 #include <math.h>
 #include "FileIO.h"
 
-
-
 Mailbox::Mailbox() {
     
 }

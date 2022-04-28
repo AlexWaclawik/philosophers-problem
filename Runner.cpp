@@ -20,18 +20,19 @@
     //else if philospher == EATING
         //if mesage is token
             //keep the token
-#include <Runner.h>
-#include <thread>
-#include <iostream>
-#include "Philosopher.h"
-#include "Changer.h"
 
-Runner::Runner() {
+#include <Runner.h>
+//#include "Philosopher.h"
+//#include "Changer.h"
+
+void Runner::Runner() {
 
 }
 
 
-Runner::Runner(Philosopher* philosopher1) {
+void Runner::Runner(Philosopher* philosopher1, Changer & parentChanger)
+: Changer(parentChanger)
+{
     phil = philosopher1;
     while (keepGoing) {
         state = phil->getState();
@@ -78,6 +79,11 @@ Runner::Runner(Philosopher* philosopher1) {
 }
 
 
-Runner::~Runner() {
+void Runner::~Runner() {
 
+}
+
+
+void Runner::setState(std::string newState) {
+	this->state = newState;
 }

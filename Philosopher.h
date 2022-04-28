@@ -6,7 +6,7 @@
 #include <thread>
 #include <sys/time.h>
 #include <math.h>
-#include "Runner.h"
+//#include "Runner.h"
 #include "Changer.h"
 #include "Mailbox.h"
 
