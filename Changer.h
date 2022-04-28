@@ -14,7 +14,7 @@ class Changer {
 		Mailbox* mail;
 	public:
 		Changer();
-		~Changer():
+		~Changer();
 		void acquire();
 		void stateChange(std::string newState);
 		void release();

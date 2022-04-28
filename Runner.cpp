@@ -24,6 +24,7 @@
 #include <thread>
 #include <iostream>
 #include "Philosopher.h"
+#include "Changer.h"
 
 Runner::Runner() {
 

@@ -13,10 +13,10 @@ std::string FileIO::readFile(int lineToRead){
   }//end for(i)
   std::getline(inFile, lineRead);
   inFile.close();
-  int len = strlen(lineRead);
+  int len = lineRead.length();
   for (int i = 0; i < len; i++) {
-      if (lineRead == ' ') {
-          lineRead = lineRead.substr(0, lineRead.find(' ')) + lineRead.substr(lineRead.find(' '), lineRead.end());
+      if (lineRead == " ") {
+          lineRead = lineRead.substr(0, lineRead.find(' ')) + lineRead.substr(lineRead.find(' '), len-1);
       }
   }
   return(lineRead);
@@ -51,4 +51,8 @@ FileIO::FileIO(){
 
 FileIO::~FileIO(){
 
+}
+
+std::string FileIO::getString(){
+  return totalString;
 }

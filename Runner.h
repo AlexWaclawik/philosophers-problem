@@ -13,6 +13,7 @@ private:
     std::string state;//will be the state that the philsoopher is in
     std::string msg;//string which will hold the two character code
     bool keepGoing = true;//boolean telling the runner to continue the loop
+    int recievedFromID;
 public:
     Runner();
     Runner(Philosopher*);//constructor to be used normally

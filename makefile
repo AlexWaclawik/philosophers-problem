@@ -2,7 +2,7 @@
 
 CFLAGS = -g -Wall
 
-#copied from last program not updated yet
+
 main.o: main.cpp Runner.h Mailbox.h Changer.h Philosopher.h FileIO.h
 	g++ $(CFLAGS) -c main.cpp
 

@@ -14,12 +14,12 @@
 
 
 int main() {
-	FileIO file = new FileIO();
+	FileIO file;
     std::string fileInfo = file.getString();
     std::vector<std::vector<int>> vectorInt = parseString(fileInfo);
     std::vector<std::thread> vectorPhilosopher;
     int values[vectorInt.size()];
-    Mailbox mail = new Mailbox();
+    Mailbox mail;
     std::vector<Philosopher*> vectorOfPhilosophers;
     for (int i = 0; i < vectorInt.size(); i++) {
         for (int j = 0; j < vectorInt.size(); j++) {
@@ -50,7 +50,7 @@ std::vector parseString(std::string input) {
     std::string delimiter3 = "|";
     char ch1 = '|';
     char ch2 = ',';
-    int numberOfPhilosophers = std::count(modify.begin(), modify.end(), ch);
+    int numberOfPhilosophers = std::count(modify.begin(), modify.end(), ch1) + 1;
     int philosopherNumber;
     std::vector<std::vector<int>> vectorInt(numberOfPhilosophers, std::vector<int>(numberOfPhilosophers, 0));
     std::stringstream ss;

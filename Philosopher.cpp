@@ -12,9 +12,10 @@
 #include <thread>
 #include <sys/time.h>
 #include <math.h>
-#include <Philosopher.h>
+#include "Philosopher.h"
 #include <vector>
 #include "Mailbox.h"
+
 
 Philosopher::Philosopher(int givenID, int* array, Mailbox* mail){
     id = givenID;
