@@ -7,12 +7,12 @@
 #include "FileIO.h"
 
 
-Mailbox::MailBox() {
+Mailbox::Mailbox() {
     
 }
 
 // destructor
-Mailbox::~MailBox() {
+Mailbox::~Mailbox() {
 }
 
 // empty mailbox

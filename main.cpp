@@ -26,7 +26,7 @@ int main() {
             values[j] = vectorInt[i][j];
         }
         vectorPhilosopher.emplace_back(Philosopher, i, values, &mail);
-        vectorOfPhilosophers.emplace_back(&vectorPhilosopher[vectorPhilosopher.end()]);
+        vectorOfPhilosophers.emplace_back(vectorPhilosopher[vectorPhilosopher.end()]);
     }
     for(int j = 0; j < vectorInt.size(); j++){
         for(int k = 0; k < vectorInt.size(); k++){

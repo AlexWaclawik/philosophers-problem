@@ -15,11 +15,12 @@
 #include "Philosopher.h"
 #include <vector>
 #include "Mailbox.h"
+#include <unistd.h>
 
 
 Philosopher::Philosopher(int givenID, int* array, Mailbox* mail){
     id = givenID;
-    for (int i = 1; i < array.size(); i++) {
+    for (int i = 1; i < array[].size(); i++) {
         if (array[i] != -1) {
             neighbors.emplace_back(array[i]);
         }
@@ -27,7 +28,7 @@ Philosopher::Philosopher(int givenID, int* array, Mailbox* mail){
     notDone = true;//main loop for philosopher
     notifyBool = true;//true means stay in entry section
     state = "HUNGRY";//state begins at hungry
-    changer= new Changer();//create changer
+    this->changer = new Changer();//create changer
      //will end when notDoneChange is called
 }
 
@@ -36,11 +37,11 @@ Philosopher::~Philosopher(){
 }
 
 void Philosopher::giveToken(int giveID){
-    changer->giveToken(giveID);
+    this->changer->giveToken(giveID);
 }
 
 void Philosopher::giveFork(int giveID){
-    changer->giveFork(giveID);
+    this->changer->giveFork(giveID);
 }
 
 void Philosopher::thinking() {
@@ -52,8 +53,8 @@ void Philosopher::thinking() {
 
 void Philosopher::eating() {
     this->state = "EATING";
-    change->stateChange(state);//tells changer that the state has been changed this 
-    sleep(this->getRandomTime());//sleeps for a random time while EATING
+    this->changer->stateChange(state);//tells changer that the state has been changed this 
+    usleep(this->getRandomTime());//sleeps for a random time while EATING
 }
 
 float Philosopher::getRandomTime() {
@@ -82,7 +83,7 @@ bool Philosopher::notify()
     return notifyBool;
 }
 
-bool Philsopher::notify() {
+bool Philosopher::notify() {
     return notifyBool;
 }
 
