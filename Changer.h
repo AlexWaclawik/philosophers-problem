@@ -1,20 +1,16 @@
 #ifndef CHANGER_H_
 #define CHANGER_H_
 
-#include "Philosopher.h"
-#include "Mailbox.h"
+#include "Runner.h"
 #include <iostream>
 
 class Changer {
 	
 	private:
-		std::string currentState;
-		int sid;
-		int rid;
-		Mailbox mail;
+		Runner runner;
 	public:
 		Changer();
-		~Changer():
+		~Changer();
 		void acquire();
 		void stateChange(std::string newState);
 		void release();

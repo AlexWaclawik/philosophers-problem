@@ -14,8 +14,17 @@
 #include "Changer.h"
 
 // constructor
-Changer::Changer() {
-	
+Changer::Changer()
+: runner(*this)
+{
+
+}
+
+// overloaded constructor
+Changer::Changer(*philospherPtr)
+: runner(*this)
+{
+	runner = new Runner(*philospherPtr);
 }
 
 // destructor
@@ -25,15 +34,15 @@ Changer::~Changer() {
 
 // acquire fork
 void Changer::acquire(void) {
-	
+	// call Runner
 }
 
 // change current state
 void Changer::stateChange(std::string newState) {
-	this->currentState = newState;
+	runner.setState(newState);
 }
 
 // release fork
 void Changer::release(void) {
-	
+	// call Runner
 }

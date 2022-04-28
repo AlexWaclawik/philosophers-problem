@@ -9,11 +9,12 @@
 class FileIO {
     private:
         std::string totalString;
-	public:
+     public:
         FileIO();
         ~FileIO();
         std::string readFile(int);
-        void appendString(std::string, std::string);
+        std::string appendString(std::string, std::string);
+        std::string getString();
 };
 
 #endif
