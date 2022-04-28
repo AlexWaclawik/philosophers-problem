@@ -10,4 +10,30 @@
 
 //will contain information about which other philosophers it will talk to LEFT and RIGHT
 //will also ahve array containing inforamtion abot where the tokens and forks are both LEFT and RIGHT {0,0,0,0} would mean that the philosopher has neither fork nor token for both 
-//
+
+#include "Changer.h"
+
+// constructor
+Changer::Changer() {
+	
+}
+
+// destructor
+Changer::~Changer() {
+	
+}
+
+// acquire fork
+void Changer::acquire(void) {
+	
+}
+
+// change current state
+void Changer::stateChange(std::string newState) {
+	this->currentState = newState;
+}
+
+// release fork
+void Changer::release(void) {
+	
+}

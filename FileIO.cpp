@@ -13,6 +13,12 @@ std::string FileIO::readFile(int lineToRead){
   }//end for(i)
   std::getline(inFile, lineRead);
   inFile.close();
+  int len = strlen(lineRead);
+  for (int i = 0; i < len; i++) {
+      if (lineRead == ' ') {
+          lineRead = lineRead.substr(0, lineRead.find(' ')) + lineRead.substr(lineRead.find(' '), lineRead.end());
+      }
+  }
   return(lineRead);
 }//end readFile function
 
