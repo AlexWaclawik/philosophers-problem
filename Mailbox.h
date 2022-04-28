@@ -15,7 +15,7 @@ using namespace std;
 
 typedef unsigned short uint16;
 
-class MailBox {
+class Mailbox {
   struct item {
     int length;
     char *content;
@@ -26,8 +26,8 @@ class MailBox {
     mutex mtx;
     std::vector<Philosopher*> vectorOfPholosophers;
   public:
-    MailBox();
-    ~MailBox();
+    Mailbox();
+    ~Mailbox();
     bool empty(uint16 dest); 
     int send(uint16 dest, const void *packet, int len);
     int recv(uint16 dest, void *packet, int max);
