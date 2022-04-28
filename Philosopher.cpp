@@ -14,7 +14,6 @@
 #include <math.h>
 #include <Philosopher.h>
 
-
 Philosopher::Philosopher(){
     notDone = true;//main loop for philosopher
     notifyBool = true;//true means stay in entry section
