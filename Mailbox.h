@@ -9,6 +9,7 @@
 #include <map>
 #include <queue>
 #include <mutex>
+#include "Philosopher.h"
 
 using namespace std;
 

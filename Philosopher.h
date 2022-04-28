@@ -1,15 +1,14 @@
 
-#ifndef PHILOSOPHER.H
+#ifndef PHILOSOPHER_H
 #define PHILOSOPHER_H
 
 #include <iostream>
 #include <thread>
 #include <sys/time.h>
 #include <math.h>
-#include <Philosopher.h>
-#include <Runner.h>
-#include <Changer.h>
-
+#include "Runner.h"
+#include "Changer.h"
+#include "Mailbox.h"
 
 class Philosopher {
 private:

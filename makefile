@@ -12,7 +12,7 @@ FileIO.o: FileIO.cpp Fileio.h input.txt
 Philosopher.o: Philosopher.cpp Philosopher.h Runner.h Changer.h
 	g++ $(CFLAGS) -c Philosopher.cpp
 
-Runner.o: Runner.cpp Runner.h Changer.h Mailbox.h
+Runner.o: Runner.cpp Runner.h Changer.h Mailbox.h Philosopher.h
 	g++ $(CFLAGS) -c Runner.cpp
 
 Changer.o: Changer.cpp Changer.h Runner.h Mailbox.h

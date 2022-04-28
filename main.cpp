@@ -19,11 +19,9 @@ int main() {
     std::vector<std::vector<int>> vectorInt = parseString(fileInfo);
     std::vector<std::thread> vectorPhilosopher;
     int values[vectorInt.size()];
-    Mailbox mail = new Mailbox;
+    Mailbox mail = new Mailbox();
     std::vector<Philosopher*> vectorOfPhilosophers;
-    int philospherID = 0;
     for (int i = 0; i < vectorInt.size(); i++) {
-        philosopherID = vectorInt[i][0];
         for (int j = 0; j < vectorInt.size(); j++) {
             values[j] = vectorInt[i][j];
         }

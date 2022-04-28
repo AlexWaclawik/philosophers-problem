@@ -11,7 +11,7 @@ class Changer {
 		std::string currentState;
 		int sid;
 		int rid;
-		Mailbox mail;
+		Mailbox* mail;
 	public:
 		Changer();
 		~Changer():

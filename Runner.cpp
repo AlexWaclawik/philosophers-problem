@@ -23,7 +23,7 @@
 #include <Runner.h>
 #include <thread>
 #include <iostream>
-#include <Philosopher.h>
+#include "Philosopher.h"
 
 Runner::Runner() {
 
@@ -31,9 +31,9 @@ Runner::Runner() {
 
 
 Runner::Runner(Philosopher* philosopher1) {
-    philsopher = philosopher1;
+    phil = philosopher1;
     while (keepGoing) {
-        state = philsopher1->getState();
+        state = phil->getState();
         recievedFromID = parentChanger->getMsgID();//get packet from mailbox NO IDEA HOW TO DO THIS PLZ HELP
         msg = parentChanger->getMsg();//^these two lines should happen at like the same time not sure how to put these two lines together
         //also needs to be turned into a two charcter long string
