@@ -3,6 +3,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <thread>
 #include <algorithm>
 #include "Mailbox.h"
 #include "Philosopher.h"
@@ -13,13 +14,33 @@
 
 
 int main() {
-	FileIO file = new FileIO();
+	FileIO file;
     std::string fileInfo = file.getString();
     std::vector<std::vector<int>> vectorInt = parseString(fileInfo);
+    std::vector<std::thread> vectorPhilosopher;
+    int values[vectorInt.size()];
+    Mailbox mail;
+    std::vector<Philosopher*> vectorOfPhilosophers;
+    for (int i = 0; i < vectorInt.size(); i++) {
+        for (int j = 0; j < vectorInt.size(); j++) {
+            values[j] = vectorInt[i][j];
+        }
+        vectorPhilosopher.emplace_back(Philosopher, i, values, &mail);
+        vectorOfPhilosophers.emplace_back(&vectorPhilosopher[vectorPhilosopher.end()]);
+    }
+    for(int j = 0; j < vectorInt.size(); j++){
+        for(int k = 0; k < vectorInt.size(); k++){
+            if((vectorInt[j][k] != -1) && (vectorInt[j][k] < j)){
+                vectorPhilosopher[j].giveFork(vectorInt[j][k]);
+            }
+            if((vectorInt[vectorInt.size() - j][vectorInt.size() - k] != -1) && (vectorInt[j][k] > j)){
+                vectorPhilosopher[vectorInt.size() - j].giveToken(vectorInt[j][k]);
+            }
+        }
+    }
+    mail.giveVector(vectorOfPhilosophers);
 
 
-
-	
 }
 
 std::vector parseString(std::string input) {
@@ -29,7 +50,7 @@ std::vector parseString(std::string input) {
     std::string delimiter3 = "|";
     char ch1 = '|';
     char ch2 = ',';
-    int numberOfPhilosophers = std::count(modify.begin(), modify.end(), ch);
+    int numberOfPhilosophers = std::count(modify.begin(), modify.end(), ch1) + 1;
     int philosopherNumber;
     std::vector<std::vector<int>> vectorInt(numberOfPhilosophers, std::vector<int>(numberOfPhilosophers, 0));
     std::stringstream ss;
@@ -90,4 +111,5 @@ std::vector parseString(std::string input) {
         }
         vector1DLocation++;
     }
+    return vectorInt;
 }

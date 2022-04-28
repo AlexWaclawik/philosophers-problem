@@ -1,16 +1,14 @@
-#include "mailbox.h"
+#include "Mailbox.h"
 #include <iostream>
 #include <string.h>
 #include <thread>
 #include <sys/time.h>
-#include <"math.h">
+#include <math.h>
 #include "FileIO.h"
-#include "Bomb.h"
 
-//FROM LAST ASSIGNMENT NEEDS TO BE UPDATES MAYBE??
 
-// constructor
 Mailbox::MailBox() {
+    
 }
 
 // destructor
@@ -69,4 +67,9 @@ int Mailbox::recv(uint16 dest, void *packet, int max) {
         }
     }
     return 1;
+}
+
+
+void Mailbox::giveVector(std::vector<Philosopher*> vect){
+    vectorOfPhilosophers = vect;
 }

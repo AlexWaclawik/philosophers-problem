@@ -1,15 +1,14 @@
 
-#ifndef PHILOSOPHER.H
+#ifndef PHILOSOPHER_H
 #define PHILOSOPHER_H
 
 #include <iostream>
 #include <thread>
 #include <sys/time.h>
 #include <math.h>
-#include <Philosopher.h>
-#include <Runner.h>
-#include <Changer.h>
-
+#include "Runner.h"
+#include "Changer.h"
+#include "Mailbox.h"
 
 class Philosopher {
 private:
@@ -17,8 +16,10 @@ private:
     bool notifyBool;//entry section boolean
     std::string state;//string for state of philosopher
     Changer changer;//changer
+    int id;
+    std::vector<int> neighbors;
 public:
-    Philosopher();//create philsopher and begin the loop
+    Philosopher(int, int*, Mailbox*);//create philsopher and begin the loop
     ~Philosopher();
     void thinking();
     void eating();
@@ -28,6 +29,9 @@ public:
     void release();
     std::string getState();//will contact changer to let it know that the forks can now be released to other philosophers
     void notDoneChange();//will be accessed from main.cpp to end the whole loop
+    void start();
+    void giveFork(int);
+    void giveToken(int);
 };
 
 #endif

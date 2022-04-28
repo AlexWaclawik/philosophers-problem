@@ -11,10 +11,10 @@ class Changer {
 		std::string currentState;
 		int sid;
 		int rid;
-		Mailbox mail;
+		Mailbox* mail;
 	public:
 		Changer();
-		~Changer():
+		~Changer();
 		void acquire();
 		void stateChange(std::string newState);
 		void release();

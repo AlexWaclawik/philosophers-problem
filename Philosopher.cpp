@@ -12,26 +12,35 @@
 #include <thread>
 #include <sys/time.h>
 #include <math.h>
-#include <Philosopher.h>
+#include "Philosopher.h"
+#include <vector>
+#include "Mailbox.h"
 
-Philosopher::Philosopher(){
+
+Philosopher::Philosopher(int givenID, int* array, Mailbox* mail){
+    id = givenID;
+    for (int i = 1; i < array.size(); i++) {
+        if (array[i] != -1) {
+            neighbors.emplace_back(array[i]);
+        }
+    }
     notDone = true;//main loop for philosopher
     notifyBool = true;//true means stay in entry section
     state = "HUNGRY";//state begins at hungry
     changer= new Changer();//create changer
-    while (notDone) {
-        this->changer->aquire();//tells changer to aquire 
-        while (this->notify()) {//stuck in entry section until changer tells philosopher that it has gotten the forks
-            sleep(50);//sleep for 50 miliseconds
-        }
-        this->eating();
-        this->thinking();
-    }
      //will end when notDoneChange is called
 }
 
 Philosopher::~Philosopher(){
 
+}
+
+void Philosopher::giveToken(int giveID){
+    changer->giveToken(giveID);
+}
+
+void Philosopher::giveFork(int giveID){
+    changer->giveFork(giveID);
 }
 
 void Philosopher::thinking() {
@@ -55,6 +64,17 @@ float Philosopher::getRandomTime() {
     notYet = notYet * 1000;
     int done = (int)notYet;
     return done;
+}
+
+void Philosopher::start() {
+    while (notDone) {
+        this->changer->aquire();//tells changer to aquire 
+        while (this->notify()) {//stuck in entry section until changer tells philosopher that it has gotten the forks
+            sleep(50);//sleep for 50 miliseconds
+        }
+        this->eating();
+        this->thinking();
+    }
 }
 
 bool Philosopher::notify()
