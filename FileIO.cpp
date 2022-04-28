@@ -1,8 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include <sstream>
 #include <string>
-#include <vector>
 #include "FileIO.h"
 
 
@@ -20,43 +18,14 @@ std::string FileIO::readFile(int lineToRead){
 
 
 //added comments to help with pseudocodes version of the code
-void FileIO::parseString(std::string input, std::vector<std::vector<int>> &dataArray){
-    std::stringstream ss;
-    std::string delimiter1 = ":";
-    std::string delimiter2 = ",";
-    int nodeNumber = 0;
-    int nConnector;
-    std::string temp;
-    //int nodevals[4];
-    temp = input.substr(0,input.find(delimiter1));
-    ss << temp;
-    ss >> nodeNumber;
-    //nodevals[0] = nodeNumber;
-    ss = std::stringstream();
-    input.erase(0, input.find(delimiter1) + delimiter1.length());
-    //std::cout << "Node: " << nodeNumber << std::endl;
-    bool keepGoing = true;
-    dataArray[nodeNumber - 1][0] = nodeNumber;
-    int count = 1;
-    while(keepGoing){
-        if((input.find(delimiter2) == std::string::npos)){
-            keepGoing = false;
-        }
-        temp = input.substr(0,input.find(delimiter2));
-        ss << temp;
-        ss >> nConnector;
-        ss = std::stringstream();
-        dataArray[nodeNumber - 1][count] = nConnector;
-        count++;
-        input.erase(0, input.find(delimiter2) + delimiter2.length());
-        //std::cout <<"Connected to:" << nConnector << std::endl;
-        //nodevals[count] = nConnector;
-    }
-
+std::string FileIO::appendString(std::string input, std::string totalString){
+    std::string end = input + "|" + totalString;
+    return end;
 }
 
 FileIO::FileIO(){
   std::ifstream inFile;
+  totalString = "";
   std::string appString = "";
   int line = 0;
   int totalNodeNum = 0;
@@ -67,27 +36,13 @@ FileIO::FileIO(){
   inFile.close();
   appString = "";
   //vect = vect(totalNodeNum, std::vector<int> (totalNodeNum, 0));
-  std::vector<std::vector<int>> vect(totalNodeNum, std::vector<int> (totalNodeNum, 0));
-  
   while(line < totalNodeNum){
     appString = readFile(line);//format with Node: Connection, Connection, etc
-    //std::cout << appString<<std::endl;
-    parseString(appString, vect);
+    totalString = appendString(appString, totalString);
     line = line + 1;
   }//end while
-	for(int i = 0; i < totalNodeNum;i++){
-      for(int j = 0; j < totalNodeNum; j++){
-        std::cout << vect[i][j]<<std::endl;
-      }
-      std::cout << "End of " << i + 1 << " node"<<std::endl;
-  }
 }//end main
 
 FileIO::~FileIO(){
 
-}
-
-std::vector<std::vector<int>> FileIO::getVector(){
-    //std::cout << vect[0][0];
-	return vect;
 }
