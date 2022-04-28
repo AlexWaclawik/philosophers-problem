@@ -1,0 +1,1 @@
+//will make and start the philosophers also will give eah pilosopher a fork not wure how to give the corect amount of tokens
