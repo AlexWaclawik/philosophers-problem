@@ -3,6 +3,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <thread>
 #include <algorithm>
 #include "Mailbox.h"
 #include "Philosopher.h"
@@ -16,10 +17,16 @@ int main() {
 	FileIO file = new FileIO();
     std::string fileInfo = file.getString();
     std::vector<std::vector<int>> vectorInt = parseString(fileInfo);
-
-
-
-	
+    std::vector<std::thread> vectorPhilosopher;
+    int values[vectorInt.size()];
+    int philospherID = 0;
+    for (int i = 0; i < vectorInt.size(); i++) {
+        philosopherID = vectorInt[i][0];
+        for (int j = 0; j < vectorInt.size(); j++) {
+            values[j] = vectorInt[i][j];
+        }
+        vectorPhilosopher.emplace_back(Philosopher, values);
+    }
 }
 
 std::vector parseString(std::string input) {
@@ -90,4 +97,5 @@ std::vector parseString(std::string input) {
         }
         vector1DLocation++;
     }
+    return vectorInt;
 }
