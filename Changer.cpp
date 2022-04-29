@@ -24,7 +24,8 @@ Changer::Changer()
 Changer::Changer(*philospherPtr)
 : runner(*this)
 {
-	std::thread t1(Runner(*philospherPtr));
+	runner  = new Runner(*philospherPtr);
+	std::thread t1(Runner(*philospherPtr, forkPos));
 	std::thread t1.join();
 }
 
