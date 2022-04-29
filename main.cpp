@@ -10,6 +10,7 @@
 #include "Runner.h"
 #include "Changer.h"
 #include "FileIO.h"
+#include <cstdlib>
 
 
 
@@ -20,6 +21,7 @@ int main() {
     std::vector<std::thread> vectorPhilosopher;
     int values[vectorInt.size()];
     Mailbox mail;
+    bool flip = true;
     std::vector<Philosopher*> vectorOfPhilosophers;
     for (int i = 0; i < vectorInt.size(); i++) {
         for (int j = 0; j < vectorInt.size(); j++) {
@@ -30,17 +32,36 @@ int main() {
     }
     for(int j = 0; j < vectorInt.size(); j++){
         for(int k = 0; k < vectorInt.size(); k++){
+		flip = randomBool();
             if((vectorInt[j][k] != -1) && (vectorInt[j][k] < j)){
-                vectorPhilosopher[j].giveFork(vectorInt[j][k]);
-            }
+		    if(flip){
+                	vectorPhilosopher[j].giveFork(vectorInt[j][k]);
+		    }else{
+			vectorPhilosopher[j].giveFork(vectorInt[j][k]);
+		    }
+		}
             if((vectorInt[vectorInt.size() - j][vectorInt.size() - k] != -1) && (vectorInt[j][k] > j)){
-                vectorPhilosopher[vectorInt.size() - j].giveToken(vectorInt[j][k]);
+		    if(flip){
+                	vectorPhilosopher[vectorInt.size() - j].giveToken(vectorInt[j][k]);
+		    }else{
+			vectorPhilosopher[vectorInt.size() - j].giveToken(vectorInt[j][k]);
+		    }
             }
         }
     }
     mail.giveVector(vectorOfPhilosophers);
 
 
+}
+
+bool randomBool(){
+	srand((unsigned)time(NULL));
+	int random = (std::rand() % 2);
+	if(random == 1 ){
+		return true;
+	} else{
+		return false;
+	}
 }
 
 std::vector parseString(std::string input) {
