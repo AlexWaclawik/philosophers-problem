@@ -30,7 +30,7 @@ void Runner::Runner() {
 }
 
 
-void Runner::Runner(Philosopher* philosopher1, Changer & parentChanger)
+void Runner::Runner(Philosopher* philosopher1, Changer &parentChanger)
 : Changer(parentChanger)
 {
     phil = philosopher1;
