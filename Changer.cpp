@@ -24,7 +24,8 @@ Changer::Changer()
 Changer::Changer(*philospherPtr)
 : runner(*this)
 {
-	runner = new Runner(*philospherPtr);
+	std::thread t1(Runner(*philospherPtr));
+	std::thread t1.join();
 }
 
 // destructor
@@ -34,7 +35,7 @@ Changer::~Changer() {
 
 // acquire fork
 void Changer::acquire(void) {
-	// call Runner
+	//Runner
 }
 
 // change current state

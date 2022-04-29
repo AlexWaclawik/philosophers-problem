@@ -15,6 +15,7 @@ class Changer {
 		int forkPos [4] = {}; 
 	public:
 		Changer();
+		Changer(*philosopherPtr);
 		~Changer();
 		void acquire();
 		void stateChange(std::string newState);
