@@ -50,6 +50,9 @@ int main() {
         }
     }
     mail.giveVector(vectorOfPhilosophers);
+	for(Philosopher : vectorPhilosopher){
+		Philosopher.start();
+	}
 
 
 }
